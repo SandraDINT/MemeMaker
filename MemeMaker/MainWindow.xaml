@@ -1,0 +1,111 @@
+﻿<Window x:Class="MemeMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemeMaker"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="700"
+        Width="800">
+    <ScrollViewer>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Texto superior"
+                           Margin="5,0,0,0" />
+                <TextBox x:Name="textBoxSuperior"
+                         Grid.Column="1"
+                         Margin="5,0,20,5" />
+                <TextBlock Grid.Row="1"
+                           Text="Texto inferior"
+                           Margin="5,0,0,0" />
+                <TextBox Grid.Row="1"
+                         x:Name="textBoxInferior"
+                         Grid.Column="1"
+                         Margin="5,0,20,5"/>
+                <TextBlock Grid.Row="2"
+                           Text="Alto" 
+                           Margin="5,0,0,0" />
+                <Slider Grid.Row="2"
+                        x:Name="sliderAlto"
+                        Grid.Column="1"
+                        Width="500"
+                        Minimum="100"
+                        Maximum="1000"
+                        Value="500"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,0,5" />
+                <TextBlock Grid.Row="3"
+                           Text="Acho" 
+                           Margin="5,0,0,5"/>
+                <Slider Grid.Row="3"                        
+                        Grid.Column="1"
+                        x:Name="sliderAncho"
+                        Minimum="100"
+                        Maximum="1000"
+                        Width="500"
+                        Value="500"
+                        HorizontalAlignment="Left" />
+                <TextBlock Grid.Row="4"
+                           Text="Imagen"
+                           Margin="5,0,0,0" />
+                <TextBox Grid.Row="4"
+                         x:Name="textBoxImagen"
+                         Grid.Column="2"
+                         Margin="5,0,20,5" />
+                <TextBlock Grid.Row="5"
+                           Text="Borde"
+                           Margin="5,0,0,0" />
+                <CheckBox Grid.Row="5"
+                          x:Name="checkBoxBorde"
+                          Grid.Column="1"
+                          IsChecked="True"
+                          Margin="5,0,0,0" />
+            </Grid>
+            <Border BorderBrush="black"
+                    BorderThickness="1"
+                    Background="LightPink"
+                    Margin="10"
+                    x:Name="borderImagen"
+                    Height="{Binding ElementName=sliderAncho, Path=Value}"
+                    Width="{Binding ElementName=sliderAlto, Path=Value}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="26*" />
+                        <ColumnDefinition Width="225*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Stretch="Fill"
+                           Source="{Binding ElementName=textBoxImagen, Path=Text}"
+                           Grid.ColumnSpan="2" />
+                    <TextBlock Text="{Binding ElementName=textBoxSuperior, Path=Text}"
+                               VerticalAlignment="Top"
+                               FontSize="40"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               Grid.Column="1"
+                               Margin="298,0,377,-1" />
+                    <TextBlock Text="{Binding ElementName=textBoxInferior, Path=Text}"
+                               VerticalAlignment="Bottom"
+                               FontSize="40"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               Grid.Column="1"
+                               Margin="298,0,377,-1" />
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>
